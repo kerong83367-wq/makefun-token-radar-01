@@ -1,1 +1,72 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Token Radar</title><link rel="stylesheet" href="app.css"></head><body><h1>Token Radar</h1><p id="meta"></p><table id="board"><thead><tr><th>#</th><th>Protocol</th><th>Category</th><th>TVL</th><th>7d</th><th>Implied value</th></tr></thead><tbody></tbody></table><script src="../data.js"></script><script src="app.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Token Radar — pre-token protocols, ranked by implied value</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="top">
+  <div>
+    <h1>TOKEN RADAR</h1>
+    <p class="sub">Every pre-token protocol worth farming, ranked by what its token would be worth.</p>
+  </div>
+  <div class="meta" id="meta"></div>
+</header>
+
+<section class="model" id="model">
+  <h2>How a row is valued — radar-2</h2>
+  <p class="formula">implied value = TVL &times; category multiple &times; growth &times; maturity &times; breadth</p>
+  <div class="factors">
+    <div><b>Category</b><span>Dexs &amp; Perpetuals 0.35, Lending &amp; CDP 0.30, Prediction 0.28, RWA 0.25, Risk Curators 0.24, Insurance 0.22, Yield 0.20, Stablecoins 0.18, Bridge 0.15, other 0.25. A venue that takes a cut of every trade is worth more per locked dollar than a pass-through.</span></div>
+    <div><b>Growth</b><span>7-day TVL change, clamped to &minus;50% / +150%; multiplier 1 + growth &times; 0.6.</span></div>
+    <div><b>Maturity</b><span>0.65 + 0.35 &times; &radic;(min(age, 1460 days) / 1460). A protocol that ran two years with no token is steadier than a two-week-old one; age alone never doubles a value. Unknown age counts as 365 days.</span></div>
+    <div><b>Breadth</b><span>1 + 0.03 per extra chain, up to 4. More chains, more surface for a token to land on.</span></div>
+  </div>
+  <p class="note">Every factor comes from the snapshot itself — TVL, 7-day change, listing date, category, chains. No name is ever special-cased. Already-trading protocols are shown separately, at the market's own values, never mixed into the ranking.</p>
+</section>
+
+<section class="controls">
+  <input id="q" type="search" placeholder="Search name or slug…" aria-label="Search">
+  <select id="cat" aria-label="Category"><option value="">All categories</option></select>
+  <select id="chain" aria-label="Chain"><option value="">All chains</option></select>
+  <select id="sort" aria-label="Sort">
+    <option value="rank">Sort: rank</option>
+    <option value="implied">Sort: implied value</option>
+    <option value="tvl">Sort: TVL</option>
+    <option value="growth">Sort: 7-day change</option>
+    <option value="age">Sort: age</option>
+  </select>
+  <div class="views">
+    <button id="view-board" class="on">Pre-token board</button>
+    <button id="view-live">Live tokens</button>
+  </div>
+</section>
+
+<p class="count" id="count"></p>
+
+<main>
+  <table id="board">
+    <thead><tr><th>#</th><th>Protocol</th><th>Category</th><th>Chains</th><th>TVL</th><th>7d</th><th>Age</th><th>Implied value</th><th></th></tr></thead>
+    <tbody></tbody>
+  </table>
+  <table id="live" hidden>
+    <thead><tr><th>#</th><th>Protocol</th><th>Category</th><th>Chains</th><th>TVL</th><th>Market cap</th><th>7d</th></tr></thead>
+    <tbody></tbody>
+  </table>
+</main>
+
+<aside id="detail" hidden>
+  <button id="detail-close" aria-label="Close detail">×</button>
+  <div id="detail-body"></div>
+</aside>
+
+<footer>
+  <p>Snapshot: DefiLlama public protocols API, 2026-11-14. Floor $50,000,000. 758 protocols in the snapshot; the board ranks the 40-protocol watchlist plus 137 pre-token protocols below the floor. Farming is not free money: smart-contract bugs, a depeg or a liquidation can eat the capital you park. Never farm with money you need back.</p>
+</footer>
+
+<script src="../data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

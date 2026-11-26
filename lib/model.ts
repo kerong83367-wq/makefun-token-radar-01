@@ -137,7 +137,7 @@ export interface BoardRow {
   farm_steps: string[];
 }
 
-/** The dashboard's compact view of one row. */
+/** The dashboard's compact view of one row, farm plan included so the detail view shows the board's own steps. */
 export interface RadarRow {
   rank: number;
   slug: string;
@@ -154,6 +154,7 @@ export interface RadarRow {
   growth_multiplier: number;
   maturity_multiplier: number;
   breadth_multiplier: number;
+  farm_steps: string[];
 }
 
 /** A live-token protocol: it already trades, so the board shows the market's own value. */
@@ -218,6 +219,8 @@ export function impliedValue(protocol: SnapshotProtocol, asOf: string, model: Mo
 } {
   const age = ageDays(asOf, protocol.listed_at);
   const catMult = categoryMultiple(protocol.category);
+  // change_7d arrives in percent units already (-2.2 means -2.2%), so the clamp is in
+  // percent and the multiplier divides by 100 once.
   const rawGrowth = finite(protocol.change_7d, 0);
   const growthPct = Math.min(model.growth_cap, Math.max(model.growth_floor, rawGrowth));
   const growthMult = 1 + (growthPct / 100) * model.growth_weight;
@@ -477,6 +480,7 @@ export function radarRow(row: BoardRow): RadarRow {
     growth_multiplier: row.model.growth_multiplier,
     maturity_multiplier: row.model.maturity_multiplier,
     breadth_multiplier: row.model.breadth_multiplier,
+    farm_steps: row.farm_steps,
   };
 }
 

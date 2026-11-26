@@ -1,1 +1,53 @@
-body{background:#0b1220;color:#e6edf3;font-family:system-ui,sans-serif;margin:24px}table{border-collapse:collapse;width:100%}td,th{border:1px solid #26314a;padding:6px 10px;text-align:left}th{background:#16213a}
+:root{
+  --bg:#0a0f1c; --surface:#111a2e; --surface2:#16213a; --border:#22304d;
+  --text:#e6edf3; --muted:#8b98ad; --accent:#f5b83d; --green:#3fb68b; --red:#e5484d;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;margin:0;padding:28px 32px 40px;max-width:1180px;margin-left:auto;margin-right:auto}
+h1{font-size:30px;letter-spacing:.14em;margin:0;color:var(--accent)}
+h2{font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+.top{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;border-bottom:2px solid var(--accent);padding-bottom:16px}
+.sub{color:var(--muted);margin:6px 0 0;font-size:15px}
+.meta{text-align:right;font-size:13px;color:var(--muted);line-height:1.7}
+.meta b{color:var(--text);font-size:20px}
+.model{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:18px 20px;margin:20px 0}
+.formula{font-size:17px;font-weight:600;margin:0 0 14px}
+.formula b,.factors b{color:var(--accent)}
+.factors{display:grid;grid-template-columns:1fr 1fr;gap:12px 28px}
+.factors div{font-size:13.5px;line-height:1.55;color:var(--muted)}
+.factors b{display:block;color:var(--text);font-size:13.5px;margin-bottom:2px}
+.note{font-size:13px;color:var(--muted);line-height:1.6;margin:14px 0 0;border-top:1px solid var(--border);padding-top:12px}
+.controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:4px 0 8px}
+.controls input,.controls select{background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:8px 10px;font-size:14px}
+.controls input{flex:1;min-width:200px}
+.controls button{background:var(--surface);color:var(--muted);border:1px solid var(--border);border-radius:6px;padding:8px 14px;font-size:14px;cursor:pointer}
+.controls button.on{background:var(--accent);color:#1a1206;border-color:var(--accent);font-weight:700}
+.views{margin-left:auto;display:flex;gap:8px}
+.count{color:var(--muted);font-size:13px;margin:6px 0 10px}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{padding:9px 10px;text-align:left;border-bottom:1px solid var(--border);white-space:nowrap}
+thead th{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.05em;position:sticky;top:0;background:var(--bg)}
+tbody tr{cursor:pointer}
+tbody tr:hover{background:var(--surface2)}
+td.num,th.num{text-align:right}
+td.name{font-weight:600;white-space:normal}
+td.name small{display:block;color:var(--muted);font-weight:400;font-size:12px}
+td.impl{font-weight:700;color:var(--accent)}
+.pos{color:var(--green)} .neg{color:var(--red)}
+.tag{display:inline-block;background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:1px 7px;font-size:12px;color:var(--muted)}
+.plan{color:var(--accent);font-size:13px;font-weight:600}
+#detail{position:fixed;right:24px;top:24px;bottom:24px;width:430px;max-width:92vw;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:22px 22px 18px;overflow-y:auto;box-shadow:0 18px 50px rgba(0,0,0,.55);z-index:10}
+#detail-close{position:absolute;top:10px;right:14px;background:none;border:none;color:var(--muted);font-size:26px;cursor:pointer}
+#detail h3{margin:2px 0 4px;font-size:21px}
+#detail .slug{color:var(--muted);font-size:13px}
+#detail .big{font-size:26px;font-weight:800;color:var(--accent);margin:12px 0 2px}
+#detail .big small{font-size:13px;color:var(--muted);font-weight:400}
+#detail .breakdown{margin:14px 0;border:1px solid var(--border);border-radius:8px;overflow:hidden}
+#detail .breakdown div{display:flex;justify-content:space-between;padding:8px 12px;font-size:13.5px;border-bottom:1px solid var(--border)}
+#detail .breakdown div:last-child{border-bottom:none}
+#detail .breakdown span:last-child{font-weight:700}
+#detail ol{margin:6px 0 0;padding-left:20px;font-size:13.5px;line-height:1.6}
+#detail ol li{margin-bottom:9px}
+#detail h4{margin:16px 0 4px;font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+footer{margin-top:26px;border-top:1px solid var(--border);padding-top:14px;color:var(--muted);font-size:12.5px;line-height:1.7}
+@media (max-width:760px){.factors{grid-template-columns:1fr}body{padding:18px 14px}th:nth-child(4),td:nth-child(4),th:nth-child(7),td:nth-child(7){display:none}}
