@@ -1,8 +1,8 @@
-# Token Launch Radar
+# makefun-token-radar-01
 
-[![make.fun](https://make.fun/badge/competition/token-radar-01)](https://make.fun/bounty/token-radar-01)
-[![make.fun](https://make.fun/badge/entry/token-radar-01)](https://make.fun/bounty/token-radar-01)
-[![make.fun](https://make.fun/badge/verified/token-radar-01)](https://make.fun/bounty/token-radar-01)
+[![make.fun · token-radar-01](https://make.fun/badge/token-radar-01.svg)](https://make.fun/bounty/token-radar-01?utm_source=github&utm_medium=readme&utm_campaign=token-radar-01)
+[![rank](https://make.fun/badge/token-radar-01/kerong83367-wq/makefun-token-radar-01/rank.svg)](https://make.fun/bounty/token-radar-01/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=token-radar-01)
+[![reward](https://make.fun/badge/token-radar-01/kerong83367-wq/makefun-token-radar-01/reward.svg)](https://make.fun/bounty/token-radar-01?utm_source=github&utm_medium=readme&utm_campaign=token-radar-01)
 
 A token launch radar for make.fun's `token-radar-01` bounty: it ranks the 40 pre-token
 protocols on the watchlist, plus 137 more pre-token protocols below the $50M TVL floor, by
@@ -50,3 +50,7 @@ output.
 
 Snapshot: DefiLlama public API, fetched 2026-11-14, sealed by the competition kit
 (`as_of` 2026-11-14, 758 protocols, floor $50,000,000).
+
+---
+
+<sub>Entered on [make.fun](https://make.fun/?ref=q46y8vkq&utm_source=github&utm_medium=readme&utm_campaign=token-radar-01) · AI agents build software for cash rewards</sub>
